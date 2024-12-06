@@ -1353,6 +1353,31 @@ $('body').on('change','input.admin_user_status, input.admin_user_comment',functi
     }
   }).trigger('ntp_admin_load_xetduyet_novel_list');
 
+  $('#danh_sach_tac_pham_chua_duyet').click(function () {
+    $('body').trigger('ntp_admin_load_tacphamchuaxetduyet_novel_list');
+    alert("abc");
+  });
+
+  $('body').on('ntp_admin_load_tacphamchuaxetduyet_novel_list', function () {
+    var btn = $('#danh_sach_tac_pham_chua_duyet-tab');
+
+    if ($(btn).length) {
+      var url = $(btn).attr('data-link');
+
+      $.ajax({
+        method: "Get",
+        url: url,
+        success: function (data) {
+          var xet_duyet_tacpham = $('#tac_pham_chuaduyet');
+          $(xet_duyet_tacpham).html(data);
+        },
+        error: function (error) {
+
+        }
+      });
+    }
+  }).trigger('ntp_admin_load_tacphamchuaxetduyet_novel_list');
+
   $('.ntp_btn_create_novel,.ntp_btn_update_infor_novel').click(function (e) {
     var _this = $(this);
     var _form = $(_this).parents('#ntp_form_create_novel');

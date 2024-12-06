@@ -2,6 +2,8 @@
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="{{ url('/') }}" class="nav-link px-2 text-muted"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i class="fa-solid fa-address-book"></i> Liên hệ</a></li>
+        <li class="nav-item"><a href="{{ url('/Huong-dan') }}" class="nav-link px-2 text-muted"><i class="fa-brands fa-glide"></i> Tài liệu hướng dẫn</a></li>
+        
         @if(Auth::check())
             <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{route('User.show', [Auth::user()->id,'view=user_report-tab']) }}"><i class="fa-solid fa-flag"></i> Tố cáo</a></li>
             <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{ route('User.show', [Auth::user()->id]) }}"><i class="fa-solid fa-user"></i> Trang cá nhân</a></li>

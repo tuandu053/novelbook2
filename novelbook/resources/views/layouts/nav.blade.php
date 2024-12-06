@@ -21,10 +21,8 @@
                 </li>
                 <li class="nav-item ms-auto">
                     <a class="nav-link d-flex align-items-center gap-2 flex-wrap h-100" href="{{ url('/Lien-he') }}"><i class="fa-solid fa-address-book"></i> Liên hệ</a>
-                </li>
-                <li class="nav-item ms-auto">
-                    <a class="nav-link d-flex align-items-center gap-2 flex-wrap h-100" href="{{ url('/Huong-dan') }}"><i class="fa-brands fa-glide"></i> Tài liệu hướng dẫn</a>
-                </li> -->
+                </li>-->
+                
                 @guest
                     <li class="nav-item">
                         <a class="nav-link d-flex gap-2 align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#ntp_login_register_modal"><i class="fa-regular fa-user"></i>Đăng nhập / Đăng ký</a>

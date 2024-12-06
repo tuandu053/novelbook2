@@ -68,8 +68,13 @@
                                                     <button class="dropdown-item" id="xet_duyet_tacpham-tab" data-bs-toggle="pill"
                                                         data-bs-target="#xet_duyet_tacpham" type="button" role="tab"
                                                         aria-controls="xet_duyet_tacpham" aria-selected="false"
-                                                        data-link="{{ route('Novel.danhsach_xetduyet') }}"><i
-                                                            class="fa-solid fa-check-to-slot"></i> Xét duyệt tác phẩm</button>
+                                                        data-link="{{ route('Novel.danhsach_xetduyet') }}"><i class="fa-solid fa-ballot"></i>
+                                                         Danh sách tác phẩm</button>
+                                                    <button class="dropdown-item" id="danh_sach_tac_pham_chua_duyet-tab" data-bs-toggle="pill"
+                                                        data-bs-target="#danh_sach_tac_pham_chua_duyet" type="button" role="tab"
+                                                        aria-controls="danh_sach_tac_pham_chua_duyet" aria-selected="false"
+                                                        data-link="{{ route('Novel.danhsach_truyencochuongchuaduocxetduyet') }}"><i
+                                                            class="fa-solid fa-check-to-slot"></i> Xét duyệt chương</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -154,6 +159,10 @@
                                         </div>
                                         <div class="tab-pane fade" id="xet_duyet_tacpham" role="tabpanel"
                                             aria-labelledby="xet_duyet_tacpham-tab">
+                                            {{-- @include('admincp.admin_page.admin_xetduyet_tacpham') --}}
+                                        </div>
+                                        <div class="tab-pane fade" id="danh_sach_tac_pham_chua_duyet" role="tabpanel"
+                                            aria-labelledby="danh_sach_tac_pham_chua_duyet-tab">
                                             {{-- @include('admincp.admin_page.admin_xetduyet_tacpham') --}}
                                         </div>
                                         <div class="tab-pane fade" id="xu_ly_bao_cao_0" role="tabpanel"

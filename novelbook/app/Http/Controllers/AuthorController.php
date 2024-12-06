@@ -389,16 +389,16 @@ class AuthorController extends Controller
             $startOfMonth = Carbon::now()->startOfMonth()->toDateTimeString();
             $endOfMonth = Carbon::now()->endOfMonth()->toDateTimeString();
 
-            $hasRecordsThisMonth = Withdraw::where('idUser', $id)
-                        ->whereBetween('dCreateDay', [$startOfMonth, $endOfMonth])
-                        ->exists();
+            // $hasRecordsThisMonth = Withdraw::where('idUser', $id)
+            //             ->whereBetween('dCreateDay', [$startOfMonth, $endOfMonth])
+            //             ->exists();
 
-            if ($hasRecordsThisMonth) {
-                return response()->json([
-                    'errors' => ['Thongbao' => 'Tháng này bạn đã tạo yêu cầu rút tiền rồi'],
-                    'status' => 0
-                ]);
-            }
+            // if ($hasRecordsThisMonth) {
+            //     return response()->json([
+            //         'errors' => ['Thongbao' => 'Tháng này bạn đã tạo yêu cầu rút tiền rồi'],
+            //         'status' => 0
+            //     ]);
+            // }
 
             if(! $author) {
                 return response()->json([

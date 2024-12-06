@@ -83,50 +83,50 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+{
+    $data = $request->validate(
+        [
+            'tennguoidung' => ['required', 'string', 'max:255', Rule::unique('users', 'name')->ignore($id)],
+            'diachi' => ['max:255'],
+            'ngaysinh' => ['nullable', 'date', 'before:today'], // Kiểm tra ngày sinh không thể là ngày trong tương lai
+            'gioitinh' => ['in:nam,nữ', 'nullable'],
+        ],
+        [
+            'tennguoidung.required' => 'Tên người dùng không được để trống',
+            'tennguoidung.string' => 'Tên người dùng phải là các ký tự',
+            'tennguoidung.max' => 'Tên người dùng không được nhiều hơn 255 ký tự',
+            'tennguoidung.unique' => 'Tên người dùng đã được sử dụng',
 
-        $data = $request->validate(
-            [
-                'tennguoidung' => ['required', 'string', 'max:255', Rule::unique('users', 'name')->ignore($id),],
-                'diachi' => ['max:255'],
-                'ngaysinh' => ['nullable', 'date'],
-                'gioitinh' => ['in:nam,nữ', 'nullable'],
-            ],
-            [
-                'tennguoidung.required' => 'Tên người dùng không được để trống',
-                'tennguoidung.string' => 'Tên người dùng phải là các ký tự',
-                'tennguoidung.max' => 'Tên người dùng không được nhiều hơn 255 ký tự',
-                'tennguoidung.unique' => 'Tên người dùng đã được sử dụng',
+            'diachi.max' => 'Địa chỉ không được nhiều hơn 255 ký tự',
 
-                'diachi.max' => 'Địa chỉ không được nhiều hơn 255 ký tự',
+            'ngaysinh.date' => 'Ngày sinh không hợp lệ',
+            'ngaysinh.before' => 'Ngày sinh không thể là ngày trong tương lai', // Thông báo cho lỗi ngày trong tương lai
 
-                'ngaysinh.date' => 'Ngày sinh không hợp lệ',
+            'gioitinh.in' => 'Giới tính chỉ chấp nhận nam hoặc nữ',
+        ]
+    );
 
-                'gioitinh.in' => 'Giới tính chỉ chấp nhân nam hoặc nữ',
-            ]
-        );
-
-        if (!Auth::check()) {
-            return response()->json([
-                'status' => 0,
-                'errors' => ['Nguoidung' => 'Bạn chưa đăng nhập'],
-            ]);
-        }
-
-        // dd($data);
-        $user = User::find($id);
-        $user->name = $data['tennguoidung'];
-        $user->sAdress = $data['diachi'];
-        $user->dBirthday = $data['ngaysinh'];
-        $user->sGender = $data['gioitinh'];
-
-        $user->save();
-
+    if (!Auth::check()) {
         return response()->json([
-            'message' => 'Cập nhật thông tin cá nhân thành công',
-            'status' => 1
+            'status' => 0,
+            'errors' => ['Nguoidung' => 'Bạn chưa đăng nhập'],
         ]);
     }
+
+    $user = User::find($id);
+    $user->name = $data['tennguoidung'];
+    $user->sAdress = $data['diachi'];
+    $user->dBirthday = $data['ngaysinh'];
+    $user->sGender = $data['gioitinh'];
+
+    $user->save();
+
+    return response()->json([
+        'message' => 'Cập nhật thông tin cá nhân thành công',
+        'status' => 1
+    ]);
+}
+
 
     public function update_anhdaidien(Request $request, $id)
     {

@@ -79,6 +79,7 @@ Route::middleware(['checkUserStatus'])->group(function () {
     Route::get('/Chi-tiet-truyen/{id}',[NovelController::class,'chi_tiet_truyen'])->name('Novel.chi_tiet_truyen');
     Route::get('/Kiem-duyet-chuong-truyen/{id}',[NovelController::class,'page_kiem_duyet_chuong'])->name('Novel.page_kiem_duyet_chuong');
     Route::post('/Tim-kiem',[NovelController::class,'page_tim_kiem'])->name('Novel.page_tim_kiem');
+    Route::get('/Truyen-chua-xet-duyet',[NovelController::class,'danhsach_truyencochuongchuaduocxetduyet'])->name('Novel.danhsach_truyencochuongchuaduocxetduyet');
     
     
     Route::post('/them-thong-tin-tac-gia',[AuthorController::class,'store'])->name('Author.store');

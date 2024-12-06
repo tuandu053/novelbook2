@@ -583,5 +583,9 @@ class NovelController extends Controller
             'tiendo' =>$tiendo
         ]);
     }
+    public function danhsach_truyencochuongchuaduocxetduyet()
+    {
+        return view('admincp.admin_page.admin_tacphamchuaduyet');
+    }
     
 }
